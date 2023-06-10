@@ -34,6 +34,7 @@ const gameLoop = (
   pebble.push(firstPixelOfLower);
 
   if (dinoPosition.y === 0) {
+    process.stdin.resume();
     return;
   }
 
@@ -50,26 +51,26 @@ const plantTree = (road) => {
 
 const showDino = (dinoPosition, road, upperSky, middleSky, lowerSky) => {
   if (dinoPosition.y === 3) {
-    upperSky[0] = "🦖";
+    upperSky[0] = "🐰";
     road[0] = "_";
     return;
   }
 
   if (dinoPosition.y === 2) {
     upperSky[0] = " ";
-    middleSky[0] = "🦖";
+    middleSky[0] = "🐰";
     road[0] = "_";
     return;
   }
 
   if (dinoPosition.y === 1) {
     middleSky[0] = " ";
-    lowerSky[0] = "🦖";
+    lowerSky[0] = "🐰";
     road[0] = "_";
     return;
   }
 
-  road[0] = "🦖";
+  road[0] = "🐰";
   lowerSky[0] = " ";
 };
 
@@ -98,6 +99,7 @@ const main = (length) => {
   stdin.on("data", (data) => {
     if (data === " ") {
       dinoPosition.y = 3;
+      stdin.pause();
     }
   });
 };
